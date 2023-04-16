@@ -12,6 +12,8 @@ public class HookPointConfig {
 
 	public static ArrayList<String> TomcatFilterChainHook = new ArrayList<String>();
 
+	public static ArrayList<String> TomcatWsFilterChainHook = new ArrayList<String>();
+
 
 	static {
 		BasicServletHook.add("javax.servlet.http.HttpServlet");
@@ -21,6 +23,10 @@ public class HookPointConfig {
 		TomcatFilterChainHook.add("org.apache.catalina.core.ApplicationFilterChain");
 		TomcatFilterChainHook.add("doFilter");
 		TomcatFilterChainHook.add("javax.servlet.ServletRequest,javax.servlet.ServletResponse");
+
+		TomcatWsFilterChainHook.add("org.apache.tomcat.websocket.server.WsFilter");
+		TomcatWsFilterChainHook.add("doFilter");
+		TomcatWsFilterChainHook.add("javax.servlet.ServletRequest,javax.servlet.ServletResponse,javax.servlet.FilterChain");
 	}
 
 }

