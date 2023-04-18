@@ -102,11 +102,9 @@ public class JFMSFromJMX implements Filter {
 						handler.getClass().getMethod("prependFilterMapping", filterMapping.getClass()).invoke(handler, filterMapping);
 					}
 				} catch (Exception ignored) {
-					//pass
 				}
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
+		} catch (Exception ignored) {
 		}
 	}
 
