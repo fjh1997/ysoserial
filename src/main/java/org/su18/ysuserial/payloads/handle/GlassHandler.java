@@ -207,7 +207,7 @@ public class GlassHandler {
 			// 插入 Hook Class 基本信息
 			insertInitHookClassINFORMATION(classModifier, BasicServletHook);
 		} else if (hookType.equals("Filter")) {
-			insertInitHookClassINFORMATION(classModifier, TomcatFilterChainHook);
+			insertInitHookClassINFORMATION(classModifier, FilterChainHook);
 		} else if (hookType.equals("WsFilter")) {
 			insertInitHookClassINFORMATION(classModifier, TomcatWsFilterChainHook);
 		}
