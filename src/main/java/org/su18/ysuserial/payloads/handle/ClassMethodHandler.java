@@ -294,6 +294,8 @@ public class ClassMethodHandler {
 			method = "drop";
 		} else if (name.contains("Struts2ActionMS")) {
 			method = "executeAction";
+		}else if (name.contains("JSFThreadLocalMS")) {
+			method = "executeThreadLocal";
 		}
 		return method;
 	}
