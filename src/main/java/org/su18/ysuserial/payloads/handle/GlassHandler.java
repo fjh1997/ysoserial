@@ -4,6 +4,7 @@ import javassist.CtClass;
 import javassist.bytecode.*;
 import org.apache.commons.codec.binary.Base64;
 import org.su18.ysuserial.payloads.util.Gadgets;
+import org.su18.ysuserial.payloads.util.SuCtClass;
 
 import java.io.FileInputStream;
 import java.util.List;
@@ -23,9 +24,9 @@ import static org.su18.ysuserial.payloads.util.Utils.base64Encode;
  */
 public class GlassHandler {
 
-	public static CtClass generateClass(String target) throws Exception {
-		String  newClassName = generateClassName();
-		CtClass ctClass      = generateClass(target, newClassName);
+	public static SuCtClass generateClass(String target) throws Exception {
+		String    newClassName = generateClassName();
+		SuCtClass ctClass      = new SuCtClass(generateClass(target, newClassName));
 
 		// 如果需要，保存类文件
 		saveCtClassToFile(ctClass);
@@ -164,7 +165,7 @@ public class GlassHandler {
 		agent.setName(generateClassName());
 
 		// 保存
-		saveCtClassToFile(agent);
+		saveCtClassToFile(new SuCtClass(agent));
 		return agent;
 	}
 

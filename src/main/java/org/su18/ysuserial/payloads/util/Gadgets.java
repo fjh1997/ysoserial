@@ -128,14 +128,12 @@ public class Gadgets {
 		}
 
 		// 按需保存文件
-		saveCtClassToFile(ctClass);
-		classBytes = ctClass.toBytecode();
+		SuCtClass suCtClass = new SuCtClass(ctClass);
+		saveCtClassToFile(suCtClass);
+		classBytes = suCtClass.toBytecode();
 
 		// 加载 class 试试
 //		loadClassTest(classBytes, ctClass.getName());
-
-		// 写入前将 classBytes 中的类标识设为 JDK 1.6 的版本号
-		classBytes[7] = 49;
 
 		// 恶意类是否继承 AbstractTranslet
 		if (IS_INHERIT_ABSTRACT_TRANSLET) {

