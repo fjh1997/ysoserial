@@ -23,20 +23,20 @@ public class HookPointConfig {
 		// TomEE/Tomcat org.apache.catalina.core.ApplicationFilterChain
 
 		// InforSuite tomcat
-		// AAS com.apusic.web.container.FilterChainImpl
+		// AAS com.apusic.web.container.FilterChainImpl com.apusic.web.container.FilterComponent
 		// BES com.bes.enterprise.webtier.core.ApplicationFilterChain
 		// TongWeb com.tongweb.catalina.core.ApplicationFilterChain  com.tongweb.server.core.ApplicationFilterChain
 
 		// GlassFish org.glassfish.grizzly.servlet.FilterChainImpl
-		// Jetty org.eclipse.jetty.servlet.ServletHandler$Chain
-		// Resin com.caucho.server.webapp.ContextFilterChain
+		// Jetty org.eclipse.jetty.servlet.ServletHandler$Chain org.eclipse.jetty.servlet.ServletHandler$CachedChain
+		// Resin com.caucho.server.webapp.WebAppFilterChain
 
 		// Weblogic weblogic.servlet.internal.FilterChainImpl
 
 		// Websphere/OpenLiberty com.ibm.ws.webcontainer.filter.WebAppFilterChain
 
 		// JBOSS/Wildfly io.undertow.servlet.handlers.FilterHandler$FilterChainImpl or tomcat
-		FilterChainHook.add("org.apache.catalina.core.ApplicationFilterChain,com.apusic.web.container.FilterChainImpl,com.bes.enterprise.webtier.core.ApplicationFilterChain,com.tongweb.catalina.core.ApplicationFilterChain,com.tongweb.server.core.ApplicationFilterChain,org.glassfish.grizzly.servlet.FilterChainImpl,org.eclipse.jetty.servlet.ServletHandler$Chain,com.caucho.server.webapp.ContextFilterChain,weblogic.servlet.internal.FilterChainImpl,com.ibm.ws.webcontainer.filter.WebAppFilterChain,io.undertow.servlet.handlers.FilterHandler$FilterChainImpl");
+		FilterChainHook.add("org.apache.catalina.core.ApplicationFilterChain,com.apusic.web.container.FilterChainImpl,com.bes.enterprise.webtier.core.ApplicationFilterChain,com.tongweb.catalina.core.ApplicationFilterChain,com.tongweb.server.core.ApplicationFilterChain,org.glassfish.grizzly.servlet.FilterChainImpl,org.eclipse.jetty.servlet.ServletHandler$Chain,org.eclipse.jetty.servlet.ServletHandler$CachedChain,com.caucho.server.webapp.WebAppFilterChain,weblogic.servlet.internal.FilterChainImpl,com.ibm.ws.webcontainer.filter.WebAppFilterChain,io.undertow.servlet.handlers.FilterHandler$FilterChainImpl,com.apusic.web.container.FilterComponent");
 		FilterChainHook.add("doFilter");
 		FilterChainHook.add("javax.servlet.ServletRequest,javax.servlet.ServletResponse");
 
