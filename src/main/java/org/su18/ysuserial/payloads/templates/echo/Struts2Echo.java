@@ -17,9 +17,7 @@ public class Struts2Echo {
 		try {
 			HttpServletRequest  request  = (HttpServletRequest) ActionContext.getContext().get("com.opensymphony.xwork2.dispatcher.HttpServletRequest");
 			HttpServletResponse response = (HttpServletResponse) ActionContext.getContext().get("com.opensymphony.xwork2.dispatcher.HttpServletResponse");
-			System.out.println(response);
 			String              cmd      = request.getHeader(CMD_HEADER);
-
 			response.getWriter().println(q(cmd));
 			response.getWriter().flush();
 		} catch (IOException ignored) {

